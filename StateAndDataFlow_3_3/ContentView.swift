@@ -6,16 +6,30 @@
 //
 
 import SwiftUI
+//не успеваю доделать
 
 struct ContentView: View {
+    @EnvironmentObject var user: UserManager
+    @StateObject private var timer = TimeCounter()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hi, \(user.userName)")
+                .font(.largeTitle)
+//                .offset(x: 0, y: 100)
+            Text("\(timer.counter)")
+                .font(.largeTitle)
+            ButtonView()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(UserManager())
     }
 }
+
+
+
